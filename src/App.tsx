@@ -25,7 +25,8 @@ function App() {
           <br />
         </span>
         <span style={{ fontSize: "18px" }}>
-          -da Juventude; &nbsp; &nbsp; -da Inclusão; &nbsp; &nbsp; -do Planeta
+          -da <b>Juventude</b>; &nbsp; &nbsp; -da <b>Inclusão</b>; &nbsp; &nbsp;
+          -do Planeta
         </span>
       </div>
 

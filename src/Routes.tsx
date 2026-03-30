@@ -16,7 +16,7 @@ const AppRoutes = () => {
         </a>
         <br />
         <br />
-        <a href="http://seashell-app-e8ntx.ondigitalocean.app" target="_self">
+        <a href="https://seashell-app-e8ntx.ondigitalocean.app" target="_self">
           Arquivo do Árbitro
         </a>
       </nav>
