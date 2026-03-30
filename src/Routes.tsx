@@ -25,7 +25,7 @@ const AppRoutes = () => {
         {/* Rotas internas corretas y*/}
 
         {/* rota padrão */}
-        <Route path="/" element={<ProjetoEsfinge />} />
+        {/* <Route path="/" element={<ProjetoEsfinge />} /> */}
       </Routes>
     </>
   );
