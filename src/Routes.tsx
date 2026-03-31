@@ -1,6 +1,7 @@
 //import { Routes, Route, Link } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-import ProjetoEsfinge from "./ProjetoEsfinge";
+//import { Routes, Route } from "react-router-dom";
+import { Routes } from "react-router-dom";
+//import ProjetoEsfinge from "./ProjetoEsfinge";
 //import ArquivoArbitro from "./ArquivoArbitro";
 
 const AppRoutes = () => {
