@@ -41,7 +41,7 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             cd ${{secrets.TARGET_DIR}}
-            nvm use 20
+            nvm use 24
             yarn
             yarn build
             pm2 stop xadrez-esfinge-front || true
