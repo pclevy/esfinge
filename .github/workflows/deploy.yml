@@ -49,6 +49,10 @@ jobs:
             yarn --version
             yarn
             yarn build
+            if ! command -v pm2 >/dev/null 2>&1; then
+              echo "pm2 not found. Installing pm2 globally..."
+              npm install --global pm2
+            fi
             pm2 stop xadrez-esfinge-front || true
             pm2 delete xadrez-esfinge-front || true
             # Iniciar o servidor com o PM2
