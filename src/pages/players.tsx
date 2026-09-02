@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface Player {
   reg: string;
@@ -8,33 +8,34 @@ interface Player {
   municipio: string;
   rating: string;
 }
+// reg, nome, sobrenome, genero, titulo, rating, clube, municipio, status
+
+const httpClient = axios.create({
+  baseURL: "http://localhost:8000",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 function Players() {
   const [players, setPlayers] = useState<Player[]>([]);
   const [query, setQuery] = useState("");
   const timeoutRef = useRef<number | null>(null);
 
-  const httpClient = axios.create({
-    baseURL: "http://localhost:8000",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  function fetchPlayers() {
+  const fetchPlayers = useCallback(() => {
     httpClient
-      .get("/")
+      .get<Player[]>("/")
       .then((response) => {
         setPlayers(response.data);
       })
       .catch((error) => {
         console.error("Error fetching players:", error);
       });
-  }
+  }, []);
 
-  function findPlayer(search: string) {
+  const findPlayer = useCallback((search: string) => {
     httpClient
-      .post("/", {
+      .post<Player[]>("/", {
         query: search,
       })
       .then((response) => {
@@ -43,18 +44,18 @@ function Players() {
       .catch((error) => {
         console.error("Error fetching players:", error);
       });
-  }
-
-  useEffect(() => {
-    fetchPlayers();
   }, []);
 
   useEffect(() => {
-    if (timeoutRef.current) {
+    fetchPlayers();
+  }, [fetchPlayers]);
+
+  useEffect(() => {
+    if (timeoutRef.current !== null) {
       clearTimeout(timeoutRef.current);
     }
 
-    if (query) {
+    if (query.trim()) {
       timeoutRef.current = window.setTimeout(() => {
         findPlayer(query);
       }, 2000);
@@ -63,11 +64,11 @@ function Players() {
     }
 
     return () => {
-      if (timeoutRef.current) {
+      if (timeoutRef.current !== null) {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [query]);
+  }, [query, fetchPlayers, findPlayer]);
 
   return (
     <div style={{ textAlign: "left" }}>
@@ -75,14 +76,15 @@ function Players() {
 
       <input
         type="text"
+        value={query}
         placeholder="Buscar jogador..."
         onChange={(e) => setQuery(e.target.value)}
       />
 
       <ul>
-        {players.map((player) => {
-          return <li>{player.nome}</li>;
-        })}
+        {players.map((player) => (
+          <li key={player.reg}>{player.nome}</li>
+        ))}
       </ul>
     </div>
   );
