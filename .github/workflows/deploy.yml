@@ -42,6 +42,11 @@ jobs:
             source ~/.nvm/nvm.sh
             cd ${{secrets.TARGET_DIR}}
             nvm use 24
+            if ! command -v yarn >/dev/null 2>&1; then
+              echo "Yarn not found. Installing Yarn globally..."
+              npm install --global yarn
+            fi
+            yarn --version
             yarn
             yarn build
             pm2 stop xadrez-esfinge-front || true
