@@ -1,3 +1,6 @@
+import esfingeLogo from "../assets/esfinge.png";
+import AdSense from "../components/AdSense";
+
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 
