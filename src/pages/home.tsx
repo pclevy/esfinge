@@ -53,12 +53,7 @@ function Home() {
           -do <b>Planeta</b>
         </span>
       </div>
-
-      {/* Anúncio Google AdSense */}
-      <div style={{ margin: "20px 0" }}>
-        <AdSense adSlot="3009255339" />
-      </div>
-
+	
       <nav>
         <br />
 
@@ -79,6 +74,12 @@ function Home() {
           Arquivo do Árbitro
         </a>
       </nav>
+	
+      {/* Anúncio Google AdSense */}
+      <div style={{ margin: "20px 0" }}>
+        <AdSense adSlot="3009255339" />
+      </div>
+	  
     </>
   );
 }
