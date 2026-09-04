@@ -1,4 +1,4 @@
-import esfingeLogo from "../assets/esfinge.png";
+//import esfingeLogo from "../assets/esfinge.png";
 import AdSense from "../components/AdSense";
 
 import axios from "axios";
@@ -83,6 +83,8 @@ function Players() {
         placeholder="Buscar jogador..."
         onChange={(e) => setQuery(e.target.value)}
       />
+	  
+	  <AdSense adSlot="9948140848" />
 
       <ul>
         {players.map((player) => (
