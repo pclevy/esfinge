@@ -83,8 +83,8 @@ function Players() {
         placeholder="Buscar jogador..."
         onChange={(e) => setQuery(e.target.value)}
       />
-	  
-	  <AdSense adSlot="9948140848" />
+
+      <AdSense adSlot="9948140848" />
 
       <ul>
         {players.map((player) => (
